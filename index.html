@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Libhongo 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Handwritten font -->
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  font-family: 'Comic Sans MS', cursive;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+  max-width: 90%;
+}
+
+h1, h2 {
+  color: #ff4d6d;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+  position: relative;
+}
+
+button {
+  background: #ff4d6d;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+#noBtn {
+  background: #aaa;
+  position: relative;
+}
+
+.gifts {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 25px;
+}
+
+.gift {
+  background: #ffd6e0;
+  padding: 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  width: 140px;
+  font-weight: bold;
+}
+
+.paper {
+  background: #fffaf0;
+  padding: 30px;
+  border-radius: 15px;
+  font-family: 'Pacifico', cursive;
+  font-size: 20px;
+  color: #555;
+  box-shadow: inset 0 0 12px rgba(0,0,0,0.1);
+}
+
+.roses {
+  font-size: 28px;
+  margin: 10px 0;
+}
+</style>
+</head>
+
+<body>
+
+<audio id="music" loop>
+  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_0f1b6b7a3d.mp3" type="audio/mpeg">
+</audio>
+
+<!-- FIRST SCREEN -->
+<div class="card" id="screen1">
+  <h1>Libhongo 💕<br>Will you be my Valentine?</h1>
+
+  <!-- Cute Valentine GIF -->
+  <img 
+    src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" 
+    width="200"
+    style="border-radius:15px;"
+    alt="Valentine gif"
+  >
+
+  <div class="buttons">
+    <button id="yesBtn" onclick="yesClicked()">Yes ❤️</button>
+    <button id="noBtn" onclick="noClicked()">No 💔</button>
+  </div>
+</div>
+
+<script>
+let yesSize = 20;
+
+function noClicked() {
+  yesSize += 6;
+  const yesBtn = document.getElementById("yesBtn");
+  yesBtn.style.fontSize = yesSize + "px";
+  yesBtn.style.padding = (yesSize / 1.3) + "px";
+
+  const noBtn = document.getElementById("noBtn");
+  noBtn.style.transform = `translate(${Math.random()*120-60}px, ${Math.random()*80-40}px)`;
+}
+
+function yesClicked() {
+  document.getElementById("music").play();
+
+  document.body.innerHTML = `
+    <div class="card">
+      <h1>Yay, you said yes! 💖</h1>
+      <p>I made all these for you hehe</p>
+
+      <div class="gifts">
+        <div class="gift" onclick="gift1()">🎁 Gift 1</div>
+        <div class="gift" onclick="gift2()">🎵 Gift 2</div>
+      </div>
+    </div>
+  `;
+}
+
+function gift1() {
+  document.body.innerHTML = `
+    <div class="card">
+      <div class="roses">🌹🌹🌹</div>
+
+      <img src="us.jpg" width="220" style="border-radius:15px; margin-bottom:20px;">
+
+      <div class="paper">
+        My Dearest Libhongo,<br><br>
+
+        I just want you to know how much I truly care about you.
+        Every day I spend with you means more to me than words can explain.
+        Being with you feels natural and comforting, like I’m exactly where I’m meant to be.<br><br>
+
+        I genuinely enjoy every moment we share whether we’re laughing, talking, or simply enjoying each other’s presence.
+        You are my best friend, the person I adore the most, and the one who understands me in a way no one else ever has.<br><br>
+
+        Finding you in my life made me incredibly happy.
+        You complete me in ways I didn’t even realize were missing, and you make my world brighter just by being in it.
+        I’m so grateful for your heart, your kindness, and the love you give so effortlessly.<br><br>
+
+        Thank you for choosing me as your Valentine.
+        I promise to always care for you, appreciate you, and choose you today, tomorrow, and always.<br><br>
+
+        With all my love and affection 💕
+      </div>
+
+      <div class="roses">🌹🌹🌹</div>
+    </div>
+  `;
+}
+
+function gift2() {
+  document.body.innerHTML = `
+    <div class="card">
+      <h2>This song reminds me of you 🎶</h2>
+      <p>Every time I hear it, I think of us.</p>
+      <img 
+        src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://open.spotify.com/track/6rz44oV9uQNIAD6VTfxQwc" 
+      >
+      <p>Scan me 💘</p>
+    </div>
+  `;
+}
+</script>
+
+</body>
+</html>
